@@ -6,7 +6,7 @@
 
 
 //newast
-struct ast* newast(int nodetype, struct ast *l. struct ast *r)
+struct ast* newast(int nodetype, struct ast *l, struct ast *r)
 {
 	struct ast *a = malloc(sizeof(struct ast));
 	if(!a)
