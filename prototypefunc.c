@@ -109,4 +109,16 @@ struct ast* new_reference(struct ast *identifier)
 	a-> val = identifier;
 	return (struct ast *)a;
 }
+void yyerror(char *s, ...)
+{
+	va_list ap;
+	va_start(ap, s);
+	fprintf(stderr, "%d Error", yylineno);
+	vfprintf(stderr, s, ap);
+	fprintf(stderr);
+}
 
+int main()
+{
+	return yyparse();
+}
