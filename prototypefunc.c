@@ -117,7 +117,19 @@ void yyerror(char *s, ...)
 	vfprintf(stderr, s, ap);
 	fprintf(stderr);
 }
-
+struct ast* new_list(struct ast *stmt_list, struct ast stmt)
+{
+	struct flow *a = malloc(sizeof(struct stmtlist));
+	if(!a)
+	{
+		yyerror("out of space");
+		exit(0);
+	}
+	a-> nodetype = 'L';
+	a-> stmt_list = stmt_list;
+	a-> stmt -> stmt;
+	
+}
 int main()
 {
 	return yyparse();

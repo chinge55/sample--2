@@ -19,7 +19,7 @@ int yylex();
 %token <s> str
 %token <s> identifier
 
-%token if then else while 
+%token  IF THEN ELSE WHILE 
 %token declaration
 %nonassoc cmp
 %type <s> cmp
@@ -38,9 +38,9 @@ stmt_list: stmt
 stmt	 : assignment ';'		{;}
          | exit_cmd ';'			{exit(EXIT_SUCCESS);}
 	 | print_cmd exp ';'		{$$ = printast($2);}
-	 | exp then stmt_list else stmt_list ';' {$$ = new_flow($1, $3, $5);}
- 	 | exp then stmt_list ';'	{$$ = new_flow($1, $3, NULL);}
-	 | exp while stmt_list ';'	{$$ = new_flow($1, $3, NULL);}
+	 | exp THEN stmt_list ELSE stmt_list ';' {$$ = new_flow($1, $3, $5);}
+ 	 | exp THEN stmt_list ';'	{$$ = new_flow($1, $3, NULL);}
+	 | exp WHILE stmt_list ';'	{$$ = new_flow($1, $3, NULL);}
 	 | exp ';'			{;}
 	 ;
 // declaration: decl identifer ';'
